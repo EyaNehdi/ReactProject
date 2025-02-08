@@ -2,6 +2,10 @@ import { useState } from 'react'
 import './App.css'
 import Header from './Header'
 import Footer from './Footer'
+import CounterC from './CounterC'
+import CounterF from './CounterF'
+import Pokemon from './Pokemon'
+import ListManager from './ListManager'
 
 function App() {
   const [count, setCount] = useState(0);
@@ -12,6 +16,10 @@ const handleClick =()=>{setCount(()=>count+1)}
     <>
      <Header name={name} lastName={lastName} />
      <button onClick={handleClick}>{count}</button>
+     <CounterC counter={10} />
+     <CounterF step={2} />
+     <Pokemon />
+     <ListManager initialItems={['Angular','VueJS','React']}  />
      <Footer />
     </>
   )
