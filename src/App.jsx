@@ -7,6 +7,8 @@ import CounterF from './CounterF'
 import Pokemon from './Pokemon'
 import ListManager from './ListManager'
 import ColorBox from './ColorBox'
+import Evaluation from './Evaluation'
+import ToDo from './ToDo'
 
 function App() {
   const [count, setCount] = useState(0);
@@ -22,6 +24,8 @@ const handleClick =()=>{setCount(()=>count+1)}
      <Pokemon />
      <ListManager initialItems={['Angular','VueJS','React']}  />
      <ColorBox initialColor={'#FF0000'} />
+     <Evaluation initialNotes={[15,20,8]} />
+     <ToDo initialTask={[{task:'Terminer projet',priority:'Haute'},{task:'Terminer tache',priority:'Moyenne'}]} />
      <Footer />
     </>
   )
