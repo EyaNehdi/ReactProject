@@ -9,6 +9,7 @@ import ListManager from './ListManager'
 import ColorBox from './ColorBox'
 import Evaluation from './Evaluation'
 import ToDo from './ToDo'
+import Events from './components/Events'
 
 function App() {
   const [count, setCount] = useState(0);
@@ -26,6 +27,7 @@ const handleClick =()=>{setCount(()=>count+1)}
      <ColorBox initialColor={'#FF0000'} />
      <Evaluation initialNotes={[15,20,8]} />
      <ToDo initialTask={[{task:'Terminer projet',priority:'Haute'},{task:'Terminer tache',priority:'Moyenne'}]} />
+     <Events />
      <Footer />
     </>
   )
