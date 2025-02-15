@@ -4,7 +4,6 @@ import data from '../assets/data/events.json'
 import { useState , useEffect } from "react";
 const Events = () => {
     const [events,setEvents] = useState([]);
-    const [likes,setLikes]= useState(false);
     useEffect((()=>{
         setEvents(data);
     }),[])
@@ -16,7 +15,7 @@ const Events = () => {
         ));
     };
     const handleLike = (name) => {
-        setLikes(events.map((event)=>
+        setEvents(events.map((event)=>
 event.name === name ?
           {...event, like:!event.like }: event
         ));

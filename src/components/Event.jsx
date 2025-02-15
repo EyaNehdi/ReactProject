@@ -1,19 +1,14 @@
 import Card from 'react-bootstrap/Card';
 import placeholder from '../assets/placeholder.jpg';
 import Button from 'react-bootstrap/Button';
-import { useEffect } from 'react';
 const Event = ({event,handleClick,handleLike}) =>{
     //vite bundler react
     const images = import.meta.glob('../assets/*',{eager:true});
     const getImagePath = (img) => {
 return images[`../assets/${img}`]?.default || placeholder;
     }
-   
 
 
-    useEffect((()=>{
-        
-    }),[like])
 return (
     <>
     <Card>
@@ -28,7 +23,7 @@ return (
                Number of participants: {event.nbParticipants}
             </Card.Text>
             <Button className='m-4' onClick={()=>handleClick(event.name)} disabled={event.nbTickets==0}>Book an event</Button>
-            <Button className='m-4' onClick={()=>handleLike(event.name)}>Like</Button>
+            <Button className='m-4' onClick={()=>handleLike(event.name)}>{event.like ? "Dislike" : "Like"}</Button>
             </Card.Body>
     </Card>
     </>
