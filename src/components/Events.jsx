@@ -1,5 +1,6 @@
 import Event from "./Event";
 import data from '../assets/data/events.json'
+import Header from "../Header";
 
 import { useState , useEffect } from "react";
 const Events = () => {
@@ -23,6 +24,7 @@ event.name === name ?
     
     return (
         <>
+        <Header />
         <h1>Events Components</h1>
         <div>
         {events.map((event,index)=>

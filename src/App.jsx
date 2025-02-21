@@ -10,24 +10,38 @@ import ColorBox from './ColorBox'
 import Evaluation from './Evaluation'
 import ToDo from './ToDo'
 import Events from './components/Events'
+import { Navigate, Route,Routes } from 'react-router-dom'
+import Home from './pages/Home'
+import Login from './components/Login'
+import AjouterEvent from './components/AjouterEvent'
+import EventPrice from './components/EventPrice'
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [name,setName] = useState('Eya');
-  const [lastName,setLastName] = useState('Nehdi');
-const handleClick =()=>{setCount(()=>count+1)}
+  // const [count, setCount] = useState(0);
+  // const [name,setName] = useState('Eya');
+  // const [lastName,setLastName] = useState('Nehdi');
+// const handleClick =()=>{setCount(()=>count+1)}
   return (
     <>
-     <Header name={name} lastName={lastName} />
-     <button onClick={handleClick}>{count}</button>
+     {/* <Header  /> */}
+     {/* <button onClick={handleClick}>{count}</button>
      <CounterC counter={10} />
      <CounterF step={2} />
      <Pokemon />
      <ListManager initialItems={['Angular','VueJS','React']}  />
      <ColorBox initialColor={'#FF0000'} />
      <Evaluation initialNotes={[15,20,8]} />
-     <ToDo initialTask={[{task:'Terminer projet',priority:'Haute'},{task:'Terminer tache',priority:'Moyenne'}]} />
-     <Events  />
+     <ToDo initialTask={[{task:'Terminer projet',priority:'Haute'},{task:'Terminer tache',priority:'Moyenne'}]} /> */}
+     
+     <Routes>
+     <Route path='/events' element={<Events />} />
+     <Route path='/login' element={<Navigate to="/signin" replace  />} />
+     <Route path='/signin' element={<Login />} />
+     <Route path='/ajoutEvent' element={<AjouterEvent />} />
+     <Route path='/by/price/:price' element={<EventPrice />} />
+     <Route path='*' element={<Navigate to="/" />} />
+     <Route exact path='/' element={<Home />} />
+     </Routes>
      <Footer />
     </>
   )

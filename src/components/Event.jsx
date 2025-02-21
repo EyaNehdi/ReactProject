@@ -1,6 +1,7 @@
 import Card from 'react-bootstrap/Card';
 import placeholder from '../assets/placeholder.jpg';
 import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 const Event = ({event,handleClick,handleLike}) =>{
     //vite bundler react
     const images = import.meta.glob('../assets/*',{eager:true});
@@ -24,6 +25,9 @@ return (
             </Card.Text>
             <Button className='m-4' onClick={()=>handleClick(event.name)} disabled={event.nbTickets==0}>Book an event</Button>
             <Button className='m-4' onClick={()=>handleLike(event.name)}>{event.like ? "Dislike" : "Like"}</Button>
+            <button className='btn btn-outline-primary'>
+              <Link to={`/by/price/${event.price}`}>  Voir details</Link>
+                </button>
             </Card.Body>
     </Card>
     </>
