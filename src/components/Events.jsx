@@ -26,11 +26,17 @@ event.name === name ?
         <>
         <Header />
         <h1>Events Components</h1>
-        <div>
-        {events.map((event,index)=>
-<Event event={event} key={index} handleClick={handleClick} handleLike={handleLike} />
-        )}
-        </div>
+        <div className="d-flex flex-wrap justify-content-start">
+        {events.map((event, index) => (
+          <div className="col-12 col-sm-6 col-md-4 col-lg-3 p-2" key={index}>
+            <Event 
+              event={event} 
+              handleClick={handleClick} 
+              handleLike={handleLike} 
+            />
+          </div>
+        ))}
+      </div>
         </>
     );
 }

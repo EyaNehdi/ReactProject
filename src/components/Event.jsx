@@ -15,7 +15,11 @@ return (
     <Card>
         <Card.Img src= {getImagePath(event.img)} />
         <Card.Body>
-            <Card.Title>{event.name}</Card.Title>
+            <Card.Title>
+            <Link to={`/events/${event.name}`}>
+                {event.name}
+                </Link>
+                </Card.Title>
             <Card.Text>
                Price: {event.price}
                 <br/>
