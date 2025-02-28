@@ -3,11 +3,12 @@ import data from '../assets/data/events.json'
 import Header from "../Header";
 
 import { useState , useEffect } from "react";
+import { getallEvents } from "../services/api";
 const Events = () => {
     const [events,setEvents] = useState([]);
-    useEffect((()=>{
-        setEvents(data);
-    }),[])
+    // useEffect((()=>{
+    //     setEvents(data);
+    // }),[])
     const handleClick = (name) => {
         setEvents(events.map((event) =>
             event.name === name
@@ -15,6 +16,13 @@ const Events = () => {
                 : event
         ));
     };
+    useEffect(()=>{
+      const fetchEvents = async () =>{
+        const result = await getallEvents();
+        console.log(result);
+        setEvents(result.data);      }
+      fetchEvents();
+    },[])
     const handleLike = (name) => {
         setEvents(events.map((event)=>
 event.name === name ?
