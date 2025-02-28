@@ -1,44 +1,71 @@
 {
-    "events": [
-      {
-        "id": "1",
-        "name": "Festival international de Carthage",
-        "description": "Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page",
-        "img": "event1.jpg",
-        "price": 30,
-        "nbTickets": 10,
-        "nbParticipants": 10,
-        "like": false
-      },
-      {
-        "id": "2",
-        "name": "Festival de la médina de Tunis",
-        "description": "Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page",
-        "img": "event2.jpg",
-        "price": 15,
-        "nbTickets": 4,
-        "nbParticipants": 30,
-        "like": false
-      },
-      {
-        "id": "db9e",
-        "name": "tag 12",
-        "description": "test Event Creation Axios",
-        "img": "event2.jpg",
-        "price": 0.01,
-        "nbTickets": 1,
-        "nbParticipants": 0,
-        "like": false
-      },
-      {
-        "name": "tag 2999",
-        "description": "test Event Creation Axios",
-        "img": "event2.jpg",
-        "price": 1.3,
-        "nbTickets": 53,
-        "nbParticipants": 0,
-        "like": false,
-        "id": "0fcb"
-      }
-    ]
-  }
+  "events": [
+    {
+      "id": "1",
+      "name": "Festival international de Carthage",
+      "description": "Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page",
+      "img": "event1.jpg",
+      "price": 30,
+      "nbTickets": 10,
+      "nbParticipants": 10,
+      "like": false
+    },
+    {
+      "id": "2",
+      "name": "Festival de la médina de Tunis",
+      "description": "Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page",
+      "img": "event2.jpg",
+      "price": 15,
+      "nbTickets": 4,
+      "nbParticipants": 30,
+      "like": false
+    },
+    {
+      "id": "db9e",
+      "name": "tag 12",
+      "description": "test Event Creation Axios",
+      "img": "event2.jpg",
+      "price": 0.01,
+      "nbTickets": 1,
+      "nbParticipants": 0,
+      "like": false
+    },
+    {
+      "name": "tag 2999",
+      "description": "test Event Creation Axios",
+      "img": "event2.jpg",
+      "price": 1.3,
+      "nbTickets": 53,
+      "nbParticipants": 0,
+      "like": false,
+      "id": "0fcb"
+    },
+    {
+      "id": "1cfe",
+      "name": "ferfaef",
+      "description": "kuguuuuuuuuuuuuu",
+      "price": 121,
+      "nbTickets": 1212,
+      "nbParticipants": 121,
+      "img": "image.jpg"
+    },
+    {
+      "id": "71e3",
+      "name": "ferfaef",
+      "description": "kuguuuuuuuuuuuuu",
+      "price": 121,
+      "nbTickets": 1212,
+      "nbParticipants": 121,
+      "img": "image.jpg"
+    },
+    {
+      "id": "81d2",
+      "name": "ferfaef",
+      "description": "kuguuuuuuuuuuuuu",
+      "price": 12,
+      "nbTickets": 23,
+      "nbParticipants": 23,
+      "img": "image.jpg"
+    }
+  ]
+}

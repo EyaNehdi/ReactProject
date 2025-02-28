@@ -1,13 +1,13 @@
 import './App.css'
-import Header from './Header'
-import Footer from './Footer'
-import CounterC from './CounterC'
-import CounterF from './CounterF'
-import Pokemon from './Pokemon'
-import ListManager from './ListManager'
-import ColorBox from './ColorBox'
-import Evaluation from './Evaluation'
-import ToDo from './ToDo'
+// import Header from './Header'
+ import Footer from './Footer'
+// import CounterC from './CounterC'
+// import CounterF from './CounterF'
+// import Pokemon from './Pokemon'
+// import ListManager from './ListManager'
+// import ColorBox from './ColorBox'
+// import Evaluation from './Evaluation'
+// import ToDo from './ToDo'
 import Events from './components/Events'
 import { Navigate, Route,Routes } from 'react-router-dom'
 import Home from './pages/Home'
@@ -18,6 +18,7 @@ import NotFound from './components/NotFound'
 import NavigationBar from './components/NavigationBar'
 //import EventDetails from './components/EventDetails'
 import React from 'react'
+import EventForm from './components/EventForm';
 
 function App() {
   // const [count, setCount] = useState(0);
@@ -46,7 +47,9 @@ const EventDetails = React.lazy(() => import('./components/EventDetails'));
      <Route path='/ajoutEvent' element={<AjouterEvent />} />
      <Route path='/by/price/:price' element={<EventPrice />} />
      <Route path='/events/:name' element={<EventDetails />} />
+     <Route path='/eventform' element={<EventForm />} />
      <Route path='*' element={<NotFound />} />
+     
      <Route exact path='/' element={<Home />} />
      </Routes>
      <Footer />

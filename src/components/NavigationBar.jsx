@@ -11,6 +11,9 @@ function NavigationBar() {
       <Nav.Item>
         <Nav.Link as={NavLink} to="/events" className={({ isActive }) => isActive ? "active-link" : ""}>Events</Nav.Link>
       </Nav.Item>
+      <Nav.Item>
+        <Nav.Link as={NavLink} to="/eventform" className={({ isActive }) => isActive ? "active-link" : ""}>Ajouter Event</Nav.Link>
+      </Nav.Item>
     </Nav>
     </>
   )
