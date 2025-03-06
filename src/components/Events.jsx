@@ -1,9 +1,7 @@
 import Event from "./Event";
-import data from '../assets/data/events.json'
 import Header from "../Header";
-
 import { useState , useEffect } from "react";
-import { getallEvents } from "../services/api";
+import { getallEvents , deleteEvent  } from "../services/api";
 const Events = () => {
     const [events,setEvents] = useState([]);
     // useEffect((()=>{
@@ -29,6 +27,14 @@ event.name === name ?
           {...event, like:!event.like }: event
         ));
     };
+    const handleDelete = async (id) => {
+      try {
+          await deleteEvent(id); 
+          setEvents(events.filter(event => event.id !== id));
+      } catch (error) {
+          console.error("Failed to delete event:", error);
+      }
+  };
     
     return (
         <>
@@ -41,6 +47,7 @@ event.name === name ?
               event={event} 
               handleClick={handleClick} 
               handleLike={handleLike} 
+              handleDelete={handleDelete}
             />
           </div>
         ))}

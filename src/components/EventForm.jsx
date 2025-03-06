@@ -3,8 +3,10 @@ import { useState } from "react";
 import { Form , Alert } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 import {z} from 'zod';
-import { addEvent } from "../services/api";
+import { addEvent , editEvent , getallEvents } from "../services/api";
 
 const eventSchema = z.object({
     name: z.string().min(3,"Event name must be at least 3 characters long"),
@@ -19,6 +21,8 @@ const eventSchema = z.object({
 
 function EventForm() {
     const navigate = useNavigate();
+    const { eventId } = useParams(); // Get event ID from URL
+    const [isLoading, setIsLoading] = useState(true);
     const [event, setEvent] = useState({
         name: '',
         description: '',
@@ -38,18 +42,52 @@ function EventForm() {
         resolver: zodResolver(eventSchema),
         defaultValues: event
 });
+useEffect(() => {
+    if (!eventId) {
+        setIsLoading(false);
+        return;
+    }
+
+    const fetchEvent = async () => {
+        try {
+            const response = await getallEvents(eventId); 
+            if (response?.data) {
+                const eventData = response.data;
+                Object.keys(eventData).forEach((key) => setValue(key, eventData[key])); 
+                setEvent(eventData); 
+            }
+        } catch (error) {
+            console.error("Error fetching event:", error);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    fetchEvent();
+}, [eventId, setValue]);
+
 const onSubmit = async (data) =>{
 const {name,description,price,nbTickets,nbParticipants,img} = data;
-const eventResult = null;
+let eventResult = null;
 console.log(data)
 try{
+    if (eventId) {
+         eventResult =  await editEvent(eventId, { 
+            name: data.name, 
+            description: data.description, 
+            price: data.price, 
+            nbTickets: data.nbTickets, 
+            nbParticipants: data.nbParticipants,
+            img: data.img?.[0]?.name || event.img 
+        });
+    } else {
 await addEvent({name,description,price,nbTickets,nbParticipants,img:img[0].name});
 console.log(eventResult);
-}
+}}
 catch(error){
 console.error(error);
 }
-if (eventResult.status === 201) {
+if (eventResult || eventResult.status === 201) {
     navigate("/events");
 };
 }

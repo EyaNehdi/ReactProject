@@ -48,6 +48,7 @@ const EventDetails = React.lazy(() => import('./components/EventDetails'));
      <Route path='/by/price/:price' element={<EventPrice />} />
      <Route path='/events/:name' element={<EventDetails />} />
      <Route path='/eventform' element={<EventForm />} />
+     <Route path='//update-event/:eventId' element={<EventForm />} />
      <Route path='*' element={<NotFound />} />
      
      <Route exact path='/' element={<Home />} />

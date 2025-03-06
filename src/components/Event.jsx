@@ -2,14 +2,18 @@ import Card from 'react-bootstrap/Card';
 import placeholder from '../assets/placeholder.jpg';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
-const Event = ({event,handleClick,handleLike}) =>{
+const Event = ({event,handleClick,handleLike,handleDelete}) =>{
     //vite bundler react
     const images = import.meta.glob('../assets/*',{eager:true});
     const getImagePath = (img) => {
 return images[`../assets/${img}`]?.default || placeholder;
     }
 
-
+    const deleteEvent = () => {
+        if (window.confirm(`Are you sure you want to delete the event: ${event.name}?`)) {
+            handleDelete(event.id); // Call the delete function passed down from parent
+        }
+    };
 return (
     <>
     <Card>
@@ -32,6 +36,14 @@ return (
             <button className='btn btn-outline-primary'>
               <Link to={`/by/price/${event.price}`}>  Voir details</Link>
                 </button>
+                <Button className="btn btn-warning m-4">
+          <Link to={`/update-event/${event.id}`} style={{ textDecoration: 'none', color: 'white' }}>
+            Update
+          </Link>
+        </Button>
+        <Button variant="danger" onClick={deleteEvent} className="m-4">
+                        Delete
+                    </Button>
             </Card.Body>
     </Card>
     </>
