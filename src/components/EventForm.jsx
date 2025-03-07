@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import {z} from 'zod';
 import { addEvent , editEvent , getallEvents } from "../services/api";
+import { useEventStore } from "../store/useEventStore";
 
 const eventSchema = z.object({
     name: z.string().min(3,"Event name must be at least 3 characters long"),
@@ -65,29 +66,43 @@ useEffect(() => {
 
     fetchEvent();
 }, [eventId, setValue]);
-
+ const {addEvent,deleteEvent, updateEvent} = useEventStore();
 const onSubmit = async (data) =>{
 const {name,description,price,nbTickets,nbParticipants,img} = data;
 let eventResult = null;
 console.log(data)
 try{
-    if (eventId) {
-         eventResult =  await editEvent(eventId, { 
-            name: data.name, 
-            description: data.description, 
-            price: data.price, 
-            nbTickets: data.nbTickets, 
-            nbParticipants: data.nbParticipants,
-            img: data.img?.[0]?.name || event.img 
-        });
-    } else {
-await addEvent({name,description,price,nbTickets,nbParticipants,img:img[0].name});
-console.log(eventResult);
-}}
+//     if (eventId) {
+//          eventResult =  await editEvent(eventId, { 
+//             name: data.name, 
+//             description: data.description, 
+//             price: data.price, 
+//             nbTickets: data.nbTickets, 
+//             nbParticipants: data.nbParticipants,
+//             img: data.img?.[0]?.name || event.img 
+//         });
+//     } else {
+// await addEvent({name,description,price,nbTickets,nbParticipants,img:img[0].name});
+// console.log(eventResult);
+if (eventId){
+    eventResult = await updateEvent(eventId,{
+        name:data.name,
+        description:data.description,
+        price:data.price,
+        nbTickets:data.nbTickets,
+        nbParticipants:data.nbParticipants,
+        img:data.img[0].name || event.img
+    });
+} else {
+  eventResult =  await addEvent({name,description,price,nbTickets,nbParticipants,img:img[0].name});
+    console.log(eventResult);
+}
+}
 catch(error){
 console.error(error);
 }
-if (eventResult || eventResult.status === 201) {
+console.log(eventResult.status);
+if (eventResult.status === 200 || eventResult.status === 201) {
     navigate("/events");
 };
 }

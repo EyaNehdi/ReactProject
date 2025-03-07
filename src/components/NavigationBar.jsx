@@ -1,9 +1,14 @@
 import Nav from 'react-bootstrap/Nav';
 import { NavLink } from 'react-router-dom';
 import '../assets/NavigationBar.css';
+import {useCounterStore} from '../store/useCounterStore';
 function NavigationBar() {
+  const { count, increment, decrement, reset } = useCounterStore();
   return (
     <>
+<div>
+  {count}
+</div>
     <Nav variant="tabs" defaultActiveKey="/home">
       <Nav.Item>
         <Nav.Link as={NavLink} to="/" className={({ isActive }) => isActive ? "active-link" : ""}>My Events</Nav.Link>
