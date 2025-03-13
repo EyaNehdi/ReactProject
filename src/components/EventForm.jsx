@@ -66,7 +66,7 @@ useEffect(() => {
 
     fetchEvent();
 }, [eventId, setValue]);
- const {addEvent,deleteEvent, updateEvent} = useEventStore();
+ const {addEvent, updateEvent} = useEventStore();
 const onSubmit = async (data) =>{
 const {name,description,price,nbTickets,nbParticipants,img} = data;
 let eventResult = null;

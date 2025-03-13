@@ -2,12 +2,14 @@ import Card from 'react-bootstrap/Card';
 import placeholder from '../assets/placeholder.jpg';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
+import { useFavoriteStore } from '../store/useFavoriteStore';
 const Event = ({event,handleClick,handleLike,handleDelete}) =>{
     //vite bundler react
     const images = import.meta.glob('../assets/*',{eager:true});
     const getImagePath = (img) => {
 return images[`../assets/${img}`]?.default || placeholder;
     }
+    const { addFavorite } = useFavoriteStore();
 
     const deleteEvent = () => {
         if (window.confirm(`Are you sure you want to delete the event: ${event.name}?`)) {
@@ -44,6 +46,9 @@ return (
         <Button variant="danger" onClick={deleteEvent} className="m-4">
                         Delete
                     </Button>
+                    <Button className="m-4" onClick={() => addFavorite(event)}>
+          Add to Favorites
+        </Button>
             </Card.Body>
     </Card>
     </>
